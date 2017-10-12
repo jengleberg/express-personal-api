@@ -67,7 +67,6 @@ app.get('/api/profile', function(req, res) {
 });
 
 app.get('/api/workouts', function(req, res) {
-  res.send("These are my workouts");
   res.json(Workout);
 });
 
