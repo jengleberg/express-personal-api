@@ -9,16 +9,14 @@ let workout_list = [
   		sets: 3,
   		reps: 8,
   		body_part: "Chest"
-
+	},
+	{
+		exercise: "Squats",
+		sets: 4,
+		reps: 10,
+		body_part: "Legs"
 	}
 ];
 
 
-db.Workout.create(workout_list, function(err, workout){
-   if (err){
-     return console.log("Error:", err);
-   }
 
-   console.log("Created " + workout._id);
-   process.exit(); // we're all done! Exit the program.
- });
