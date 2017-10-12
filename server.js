@@ -12,7 +12,19 @@ app.use(bodyParser.json());
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
+
+let Workout = require("./models/workouts");
+
+let profile = [
+  {
+    name: "Jeff Engleberg",
+    github_link: "https://github.com/jengleberg",
+    github_profile_image: "https://github.com/jengleberg",
+    current_city: "Denver",
+    pets: [{name: "Domino", type: "Dog", breed: "Jack Russel Terrier"}]
+  }
+];
 
 /**********
  * ROUTES *
@@ -38,16 +50,24 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
+    I_have_updated_the_api_endpoints: true, // Updated
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentation_url: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    base_url: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentation_url: "https://github.com/jengleberg/express-personal-api/README.md", // Updated
+    base_url: "https://afternoon-cove-59387.herokuapp.com/", // Updated
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"}, // Updated
+      {method: "POST", path: "/api/workouts", description: "E.g. Create a new workout"} // Updated
     ]
-  })
+  });
+});
+
+app.get('/api/profile', function(req, res) {
+  res.json(profile);
+});
+
+app.get('/api/workouts', function(req, res) {
+  res.json(Workout);
 });
 
 /**********
